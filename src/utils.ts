@@ -15,7 +15,7 @@ summary: $\{6\}
 
 $\{7\}`;
 
-var insertFrontMatter: boolean = false;
+let insertFrontMatter: boolean = false;
 
 export function
 shouldInsertFrontMatter(): boolean {
@@ -76,7 +76,7 @@ getFileNameFromUser(): Promise<string> {
     prompt: question,
     value: defaultFileName,
   });
-  if (filePath === null || filePath === undefined) {
+  if (filePath === undefined) {
     return defaultFileName;
   }
   return filePath || defaultFileName;
@@ -84,24 +84,24 @@ getFileNameFromUser(): Promise<string> {
 
 export function
 getDateTime(): string {
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-  var yyyy = today.getFullYear();
-  var time = String(today.getHours()).padStart(2, '0') +
-             ":" +
-             String(today.getMinutes()).padStart(2, '0');
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
+  const time = String(today.getHours()).padStart(2, '0') +
+               ":" +
+               String(today.getMinutes()).padStart(2, '0');
   return yyyy + '-' + mm + '-' + dd + ' ' + time;
 }
 
 export function
 addDateToFilename(fileName: string): string {
   if (fileName === null) {
-    throw undefined;
+    throw new Error('File name cannot be null');
   }
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-  var yyyy = today.getFullYear();
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
   return yyyy + '-' + mm + '-' + dd + '-' + fileName;
 }
