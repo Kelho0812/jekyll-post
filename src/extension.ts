@@ -20,7 +20,7 @@ activate(context: vscode.ExtensionContext) {
           setFrontMatter(false);
         }
       } catch (err) {
-        vscode.window.showErrorMessage(err);
+        vscode.window.showErrorMessage(err instanceof Error ? err.message : String(err));
       }
     }
   );
