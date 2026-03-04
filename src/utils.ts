@@ -4,13 +4,11 @@ import * as fs from 'fs';
 
 export const postSnippet: string =
 `---
-layout: $\{1:post\}
 title: $\{2\}
 date: YYYY
-category: $\{3\}
-author: $\{4\}
+excerpt: $\{3\}
+image: [$\{4\}]
 tags: [$\{5\}]
-summary: $\{6\}
 ---
 
 $\{7\}`;
